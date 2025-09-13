@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caminho das Castanheiras</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Primeira Seção */
+#home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background-image: url('floresta-com-arvores-perto.jpg');
+  background-size: cover;
+  background-position: center;
+}
+#home::before {
+  content:"";
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  background-color: rgba(0,0,0,0.5);
+  z-index:0;
+}
+.titulo-pequeno {
+  position:absolute; top:20px; left:20px; z-index:2;
+}
+.titulo-pequeno img {
+  width: 60px; height: auto; border-radius: 50%;
+}
+.container-frase {
+  position: relative; z-index:2;
+  padding:40px 20px; text-align:center;
+  background-color: rgba(0,0,0,0.5); border-radius:15px;
+}
+.frase {
+  font-size: clamp(1.5rem,4vw,2.5rem);
+  font-weight:600; text-shadow:2px 2px 6px rgba(0,0,0,0.7);
+  max-width:700px; margin-bottom:20px; min-height:4rem;
+  overflow:hidden; border-right:3px solid #fff; box-sizing:border-box;
+  display:inline-block; white-space: normal; color: #fff;
+}
+.subtitulo {
+  font-size: clamp(1rem,2.5vw,1.3rem);
+  font-weight:400; max-width:700px; line-height:1.5;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.7); margin-bottom:20px;
+  color: #fff;
+}
+#botao-catalogo {
+  margin-top:20px; padding:12px 25px; font-size:1rem; font-weight:600;
+  color:#fff; background-color: rgba(0,0,0,0.6); 
+  border:2px solid #2e5d34; border-radius:25px; cursor:pointer;
+  transition: all 0.3s ease;
+}
+#botao-catalogo:hover { 
+  background-color: rgba(0,0,0,0.8); border-color:#2e5d34;
+}
+
+/* Seção Sobre */
+#sobre {
+  padding:60px 20px; background-color:#f0f9f4; color:#2e5d34;
+}
+#sobre h2 { font-size:2rem; margin-bottom:20px; text-align:center; }
+#sobre p, #sobre ul {
+  max-width:800px; margin:0 auto 20px; line-height:1.5;
+}
+.equipe {
+  display:flex; justify-content:center; gap:30px; flex-wrap:wrap;
+  margin-bottom:40px;
+}
+.membro { max-width:200px; text-align:center; }
+.membro .foto {
+  width:100px; height:100px; border-radius:50%;
+  background-color:#2e5d34; margin:0 auto 10px;
+}
+
+/* Linha do tempo estilo trilha */
+#linha-do-tempo { padding:40px 0; }
+#linha-do-tempo h2 { margin-bottom:40px; text-align:center; }
+.trilha-container {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  max-width:1000px; margin:0 auto; position:relative;
+}
+.trilha-container::before {
+  content:""; position:absolute; top:25px; left:5%; right:5%;
+  height:4px; background:#3a6d3c; z-index:1;
+}
+.trilha-item {
+  position:relative; text-align:center; z-index:2; flex:1; padding:0 10px;
+}
+.trilha-item .arvore {
+  width:50px; height:50px; border-radius:50%;
+  display:flex; justify-content:center; align-items:center;
+  margin:0 auto 10px; font-size:1.5rem;
+}
+
+/* Seção 5W2H Flip Cards */
+#planejamento {
+  padding: 60px 20px;
+  color: #2e5d34;
+  background-image: url('193480080o.jpg'); /* imagem de fundo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#planejamento::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(220, 237, 193, 0.7); /* overlay semitransparente */
+  z-index: 0;
+}
+
+
+.cards-5w2h {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 20px; 
+  max-width: 1000px; 
+  margin: 0 auto;
+  position: relative;
+  z-index: 2; /* cards acima do overlay */
+}
+.card {
+  width: 260px;
+  height: 320px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%; 
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d; 
+  border-radius: 12px; 
+  cursor: pointer;
+
+}
+
+/* Flip ao passar o mouse (desktop) */
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute; 
+  width: 100%; 
+  height: 100%;
+  backface-visibility: hidden; 
+  border-radius: 12px;
+  color: #fff; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  padding: 15px;
+  box-sizing: border-box;
+}
+.card-back {
+  transform: rotateY(180deg);
+  font-size: 0.9rem;
+  line-height: 1.4; 
+  text-align: left;
+  overflow-y: auto; /* rolagem se necessário */
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Rodapé */
+footer {
+  background-color: #2e5d34; color: #fff; padding: 30px 20px;
+  text-align: center; margin-top: 40px;
+}
+footer a { color: #fff; margin: 0 10px; text-decoration: none; transition: 0.3s; }
+footer a:hover { color: #81c784; }
+</style>
+</head>
+<body>
+
+<!-- Primeira seção -->
+<section id="home">
+  <div class="titulo-pequeno">
+    <img src="logo.png" alt="Logo Caminho das Castanheiras">
+  </div>
+  <div class="container-frase">
+    <div class="frase" id="frase"></div>
+    <div class="subtitulo">
+      Descubra as árvores do IFAM CMZL e mergulhe em suas histórias, idades e nomes. Aprenda curiosidades sobre cada espécie, compreenda sua importância para o campus e conecte-se com a natureza que nos cerca.
+    </div>
+    <button id="botao-catalogo">Explorar o Catálogo</button>
+  </div>
+</section>
+
+<!-- Seção Sobre -->
+<section id="sobre">
+  <h2>Sobre o Projeto</h2>
+  <p>
+    O projeto tem como objetivo principal sensibilizar e educar a comunidade sobre a riqueza da flora local, com foco nas árvores do campus do IFAM Manaus Zona Leste. Utilizando uma abordagem interativa, o projeto visa fornecer informações detalhadas sobre cada espécie, incluindo sua idade, história, funcionalidades e importância para o ecossistema e a cultura local. O intuito é promover a valorização dessas árvores, ressaltando seu papel na preservação ambiental e na construção da identidade do campus.
+  </p>
+  <h3 style="text-align:center;">Equipe Participante</h3>
+<div class="equipe">
+  <div class="membro">
+    <div class="foto" style="background-image: url('Thalia_d6f6896f.jpg'); background-size: cover; background-position: center;"></div>
+    <p><strong>Thalia Rodrigues</strong></p>
+    <p>Acadêmica de Engnharia de Software</p>
+  </div>
+  <div class="membro">
+    <div class="foto" style="background-image: url('Maria_435746c6.jpg'); background-size: cover; background-position: center;"></div>
+    <p><strong>Maria</strong></p>
+    <p>Acadêmica de Engnharia de Software</p>
+  </div>
+  <div class="membro">
+    <div class="foto" style="background-image: url('pamela.jpg'); background-size: cover; background-position: center;"></div>
+    <p><strong>Pamela</strong></p>
+    <p>Acadêmica de Engnharia de Software</p>
+  </div>
+</div>
+
+</section>
+
+<!-- Linha do tempo estilo trilha -->
+<section id="linha-do-tempo">
+  <h2>Linha do Tempo do Projeto</h2>
+  <div class="trilha-container">
+    <div class="trilha-item"><div class="arvore" style="background:#2e5d34;">🌱</div><h4>29/08/2025</h4><p>Solicitação do trabalho, pela então professora Gizele Melo Uchoa, para a criação de um grupo que visasse o levantamento de cinco problemáticas relacionadas ao IFAM.</p></div>
+    <div class="trilha-item"><div class="arvore" style="background:#3a8e3a;">🌳</div><h4>09/09/2025 a 12/09/2025</h4><p>Elaboração da primeira versão do site <em>Caminho das Castanheiras</em>, incluindo o nome do projeto, a descrição inicial e os integrantes do grupo.</p></div>
+    <div class="trilha-item"><div class="arvore" style="background:#4caf50;">🌿</div><h4>12/09/2025</h4><p>Apresentação do tema escolhido e do modelo 5W2H para planejamento do projeto.</p></div>
+  </div>
+</section>
+
+<!-- Seção 5W2H -->
+<!-- Seção 5W2H -->
+<section id="planejamento">
+  <h2 style="position: relative; z-index: 2; text-align: center; color: #000000;">
+    Planejamento 5W2H
+  </h2>
+  <p style="font-size: 12px; color: #000000; text-align: center; font-style: italic; margin-top: -10px; position: relative; z-index: 2;">
+    Passe o mouse ou toque para virar
+  </p>
+  <div class="cards-5w2h">
+    <!-- WHAT -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#3a6d3c;"><div style="font-size:2rem;">🌱</div><h3>What</h3></div>
+      <div class="card-back" style="background:#3a6d3c; overflow-y:auto;">
+        <ul>
+          <li>Catalogar digitalmente e mapear todas as árvores do campus.</li>
+          <li>Instalar placas informativas e trilhas educativas.</li>
+          <li>Criarr um painel de gestão ambiental com os dados das árvores.</li>
+          <li>Incentivar atividades práticas de educação ambiental.</li>
+          <li>Padronizar de formulários e processos para atualização dos dados.</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- WHY -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#4caf50;"><div style="font-size:2rem;">🌿</div><h3>Why</h3></div>
+      <div class="card-back" style="background:#4caf50; overflow-y:auto;">
+        <ul>
+          <li>Preencher a lacuna de informação sobre as árvores e permitir uma gestao eficiente e sustentável do patrimônio do IFAM</li>
+          <li>Alinhar às normas ISO 9000 e ISO 14000.</li>
+          <li>Monitorar a saúde das árvores e aumentar o engajamento da comunidade.</li>
+          <li>Prevenir de doenças e impactos negativos.</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- WHERE -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#2e7d32;"><div style="font-size:2rem;">📍</div><h3>Where</h3></div>
+      <div class="card-back" style="background:#2e7d32; overflow-y:auto;">
+        <ul>
+          <li>Nas dependências do campus do IFAM, em todas as áreas com árvores, com catalogação realizada no local e armazenamento de dados em uma plataforma digital acessível</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- WHEN -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#81c784;"><div style="font-size:2rem;">🗓️</div><h3>When</h3></div>
+      <div class="card-back" style="background:#81c784; overflow-y:auto;">
+        <ul>
+          <li>Durante o período letivo com o mapeamento e catalogação das árvores.</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- WHO -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#388e3c;"><div style="font-size:2rem;">👩‍👩‍👧</div><h3>Who</h3></div>
+      <div class="card-back" style="background:#388e3c; overflow-y:auto;">
+        <ul>
+          <li>Alunos voluntários do iFAM, pesquisadores e a comunidade acadêmica em geral.</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- HOW -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#66bb6a;"><div style="font-size:2rem;">🛠️</div><h3>How</h3></div>
+      <div class="card-back" style="background:#66bb6a; overflow-y:auto;">
+        <ul>
+          <li>Registrar informações das árvores do campus, pesquisando informações sobre sua idade, hitórico e benefícios</li>
+          <li>Registrar dados em formato digital, coletando fotografias das espécies e instalando placas informativas</li>
+        </ul>
+      </div>
+    </div></div>
+
+    <!-- HOW MUCH -->
+    <div class="card"><div class="card-inner">
+      <div class="card-front" style="background:#2e7d32;"><div style="font-size:2rem;">💰</div><h3>How much</h3></div>
+      <div class="card-back" style="background:#2e7d32; overflow-y:auto;">
+        <ul>
+          <li>Baixo custo, aproveitando materiais digitais e equipamentos já disponíveis</li>
+        <ul>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+
+<!-- Rodapé -->
+<footer>
+  <p>&copy; 2025 Caminho das Castanheiras - IFAM CMZL</p>
+  <p>Desenvolvido por Pamela Nascimento</p>
+  <div>
+    <a href="#">Facebook</a>|
+    <a href="#">Instagram</a>|
+    <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+<!-- Script Frase digitando -->
+<script>
+const frases = [
+  "Conhecer uma árvore é conhecer uma história.",
+  "Preservar hoje é semear o amanhã.",
+  "O caminho das castanheiras é um caminho de saber."
+];
+let indice = 0;
+const elemento = document.getElementById("frase");
+function typeWriter(text, i=0) {
+  if(i < text.length){
+    elemento.innerHTML += text.charAt(i);
+    setTimeout(()=>typeWriter(text, i+1),50);
+  } else {
+    setTimeout(()=> {
+      elemento.innerHTML="";
+      indice = (indice + 1) % frases.length;
+      typeWriter(frases[indice]);
+    }, 2000);
+  }
+}
+typeWriter(frases[indice]);
+</script>
+
+</body>
+</html>
