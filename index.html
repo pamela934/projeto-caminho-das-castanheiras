@@ -12,8 +12,9 @@ body {
   margin: 0;
   overflow-x: hidden;
   background-color: #f0f9f4;
-  /* O padding-bottom foi removido pois o rodapé não é mais fixo */
 }
+
+/* ... (Todo o seu CSS continua aqui, sem alterações) ... */
 
 /* Primeira Seção */
 #home {
@@ -214,43 +215,32 @@ body {
   --fl-speed: 0.8s;
 }
 .flower--1 { animation: moving-flower-1 4s linear infinite; }
-.flower--1 .flower__line { height: 70vmin; animation-delay: 0.3s; }
-.flower--1 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.6s backwards; }
-.flower--1 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.4s backwards; }
-.flower--1 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.2s backwards; }
-.flower--1 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1s backwards; }
-.flower--1 .flower__line__leaf--5 { animation: blooming-leaf-right var(--fl-speed) 1.8s backwards; }
-.flower--1 .flower__line__leaf--6 { animation: blooming-leaf-left var(--fl-speed) 2s backwards; }
+/* .flower--1 .flower__line { height: 70vmin; animation-delay: 0.3s; } */
+.flower--1 .flower__line { height: 70vmin; } /* Delay removido da animação do caule */
 
 .flower--2 {
   left: 50%;
   transform: rotate(20deg);
   animation: moving-flower-2 4s linear infinite;
 }
-.flower--2 .flower__line { height: 60vmin; animation-delay: 0.6s; }
-.flower--2 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.9s backwards; }
-.flower--2 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.7s backwards; }
-.flower--2 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.5s backwards; }
-.flower--2 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.3s backwards; }
+/* .flower--2 .flower__line { height: 60vmin; animation-delay: 0.6s; } */
+.flower--2 .flower__line { height: 60vmin; }
 
 .flower--3 {
   left: 50%;
   transform: rotate(-15deg);
   animation: moving-flower-3 4s linear infinite;
 }
-.flower--3 .flower__line { animation-delay: 0.9s; }
-.flower--3 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.5s backwards; }
-.flower--3 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
-.flower--3 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
-.flower--3 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+/* .flower--3 .flower__line { animation-delay: 0.9s; } */ /* Delay removido */
+
 
 .flower__leafs {
   position: relative;
-  animation: blooming-flower 2s backwards;
 }
 .flower__leafs--1 { animation-delay: 1.1s; }
 .flower__leafs--2 { animation-delay: 1.4s; }
 .flower__leafs--3 { animation-delay: 1.7s; }
+
 .flower__leafs::after {
   content: "";
   position: absolute;
@@ -313,7 +303,7 @@ body {
   width: 1.5vmin;
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)), linear-gradient(to top, transparent 10%, #3a6d3c, #66bb6a);
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
-  animation: grow-flower-tree 4s backwards;
+  /* animation: grow-flower-tree 4s backwards;  REMOVIDO DAQUI */
 }
 .flower__line__leaf {
   --w: 7vmin;
@@ -341,6 +331,39 @@ body {
 .flower__line__leaf--4 { top: 40%; }
 .flower__line__leaf--5 { top: 0; transform-origin: left; transform: rotate(70deg) rotateY(30deg) scale(0.6); }
 .flower__line__leaf--6 { top: -2%; left: -450%; transform-origin: right; transform: rotate(-70deg) rotateY(30deg) scale(0.6); }
+
+/* =========== MUDANÇAS NO CSS ABAIXO ============ */
+
+/* Animações das folhas do caule */
+.animar .flower--1 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.6s backwards; }
+.animar .flower--1 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.4s backwards; }
+.animar .flower--1 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.2s backwards; }
+.animar .flower--1 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1s backwards; }
+.animar .flower--1 .flower__line__leaf--5 { animation: blooming-leaf-right var(--fl-speed) 1.8s backwards; }
+.animar .flower--1 .flower__line__leaf--6 { animation: blooming-leaf-left var(--fl-speed) 2s backwards; }
+
+.animar .flower--2 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.9s backwards; }
+.animar .flower--2 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.7s backwards; }
+.animar .flower--2 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.5s backwards; }
+.animar .flower--2 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.3s backwards; }
+
+.animar .flower--3 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.5s backwards; }
+.animar .flower--3 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
+.animar .flower--3 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
+.animar .flower--3 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+
+/* Animação das pétalas */
+.animar .flower__leafs {
+  animation: blooming-flower 2s backwards;
+}
+
+/* Animação do caule */
+.animar .flower__line {
+  animation: grow-flower-tree 4s backwards;
+}
+
+/* ================================================= */
+
 @keyframes moving-flower-1 { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-2deg); } }
 @keyframes moving-flower-2 { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(14deg); } }
 @keyframes moving-flower-3 { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(-20deg) rotateY(-10deg); } }
@@ -426,7 +449,7 @@ body {
 
 /* NOVO RODAPÉ MINIMALISTA COM EFEITO HOVER */
 footer {
-  background-color: #35613b;
+  background-color: #2e5d34;
   color: #e0f2f1;
   text-align: center;
   margin-top: 0;
@@ -435,11 +458,9 @@ footer {
   /* A transição agora é no próprio footer para suavizar a mudança de altura */
   transition: all 0.4s ease-in-out;
 }
-
 .rodape-conteudo {
     padding: 15px 25px;
 }
-
 .rodape-visivel {
     display: flex;
     justify-content: center;
@@ -447,23 +468,19 @@ footer {
     gap: 10px;
     margin: 0;
 }
-
 .seta-hover {
     display: inline-block;
     transition: transform 0.4s ease-in-out;
 }
-
 .rodape-oculto {
     max-height: 0; /* Começa oculto e sem altura */
     opacity: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
 }
-
 .rodape-oculto p {
     margin-bottom: 10px;
 }
-
 .rodape-oculto a {
   color: #fff;
   margin: 0 10px;
@@ -475,17 +492,13 @@ footer {
   color: #a7ffee;
   text-decoration: underline;
 }
-
-/* Efeito ao passar o mouse */
 footer:hover {
     padding-top: 25px;
     padding-bottom: 25px;
 }
-
 footer:hover .seta-hover {
     transform: rotate(180deg); /* Gira a seta para baixo */
 }
-
 footer:hover .rodape-oculto {
     max-height: 200px; /* Expande a altura */
     opacity: 1; /* Torna o conteúdo visível */
@@ -505,7 +518,7 @@ footer:hover .rodape-oculto {
     <div class="subtitulo">
       Descubra as árvores do IFAM CMZL e mergulhe em suas histórias, idades e nomes. Aprenda curiosidades sobre cada espécie, compreenda sua importância para o campus e conecte-se com a natureza que nos cerca.
     </div>
-    <button id="botao-catalogo">Explorar o Catálogo</button>
+    <a href="#sobre" id="botao-catalogo">Explorar o Catálogo</a>
   </div>
 </section>
 
@@ -638,6 +651,11 @@ footer:hover .rodape-oculto {
     </div>
     <div class="ods-conteudo-container">
         <h2>ODS Aplicáveis ao Projeto</h2>
+        
+        <button id="botao-renascer" style="padding: 10px 20px; background-color: #a7ffee; color: #1b3a1d; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-bottom: 20px;">
+            Renascer Plantas 🌱
+        </button>
+
         <div class="ods-accordion">
             <div class="ods-item">
                 <div class="ods-accordion-title">
@@ -769,7 +787,26 @@ accordionItems.forEach(item => {
     });
 });
 
-// Nenhum script é necessário para o novo rodapé, ele funciona 100% com CSS.
+// ========= NOVO SCRIPT PARA FAZER A PLANTA RENASCER ========
+const floresContainer = document.querySelector('.flowers');
+const botaoRenascer = document.getElementById('botao-renascer');
+
+function renascerPlanta() {
+    // 1. Remove a classe para 'resetar' a animação
+    floresContainer.classList.remove('animar');
+
+    // 2. Força o navegador a recalcular o estilo (o truque mágico!)
+    void floresContainer.offsetWidth;
+
+    // 3. Adiciona a classe de volta para reiniciar a animação
+    floresContainer.classList.add('animar');
+}
+
+// Adiciona o evento de clique ao botão
+botaoRenascer.addEventListener('click', renascerPlanta);
+
+// Faz a planta nascer pela primeira vez quando a página carrega
+document.addEventListener('DOMContentLoaded', renascerPlanta);
 
 </script>
 
