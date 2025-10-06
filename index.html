@@ -12,6 +12,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   background-color: #f0f9f4;
+  /* O padding-bottom foi removido pois o rodapé não é mais fixo */
 }
 
 /* Primeira Seção */
@@ -172,21 +173,13 @@ body {
   overflow-y: auto;
 }
 
-/* --- ALTERAÇÃO APLICADA AQUI --- */
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+/* NOVA SEÇÃO ODS */
 #ods {
     display: flex;
     flex-wrap: wrap;
     min-height: 100vh;
     width: 100%;
-    /* Novo fundo com gradiente animado */
-    background: linear-gradient(-45deg, #2e5d34, #3a8e3a, #81c784, #a7ffee);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background-color: #2e5d34;
 }
 .ods-animacao-container {
     flex: 2;
@@ -195,15 +188,20 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background-color: transparent; /* Alterado para transparente */
+    background-color: #2e5d34;
     overflow: hidden;
     perspective: 1000px;
 }
 .night {
-    display: none; /* Ocultado para mostrar o gradiente */
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1vmin);
+  background-image: radial-gradient(ellipse at top, transparent 0%, #1b3a1d), radial-gradient(ellipse at bottom, #1b3a1d, rgba(130, 200, 130, 0.1)), repeating-linear-gradient(220deg, #102a12 0px, #102a12 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, #102a12 0px, #102a12 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, #102a12 0px, #102a12 19px, transparent 19px, transparent 22px), linear-gradient(90deg, #a7ffee, #d0f0c0);
 }
-/* --- FIM DA ALTERAÇÃO --- */
-
 .flowers {
   position: relative;
   transform: scale(0.7);
@@ -223,6 +221,7 @@ body {
 .flower--1 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1s backwards; }
 .flower--1 .flower__line__leaf--5 { animation: blooming-leaf-right var(--fl-speed) 1.8s backwards; }
 .flower--1 .flower__line__leaf--6 { animation: blooming-leaf-left var(--fl-speed) 2s backwards; }
+
 .flower--2 {
   left: 50%;
   transform: rotate(20deg);
@@ -233,6 +232,7 @@ body {
 .flower--2 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.7s backwards; }
 .flower--2 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.5s backwards; }
 .flower--2 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.3s backwards; }
+
 .flower--3 {
   left: 50%;
   transform: rotate(-15deg);
@@ -243,6 +243,7 @@ body {
 .flower--3 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
 .flower--3 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
 .flower--3 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+
 .flower__leafs {
   position: relative;
   animation: blooming-flower 2s backwards;
@@ -251,47 +252,91 @@ body {
 .flower__leafs--2 { animation-delay: 1.4s; }
 .flower__leafs--3 { animation-delay: 1.7s; }
 .flower__leafs::after {
-  content: ""; position: absolute; left: 0; top: 0; transform: translate(-50%, -100%);
-  width: 8vmin; height: 8vmin; background-color: #a7ffee; filter: blur(10vmin);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -100%);
+  width: 8vmin;
+  height: 8vmin;
+  background-color: #a7ffee;
+  filter: blur(10vmin);
 }
 .flower__leaf {
-  position: absolute; bottom: 0; left: 50%; width: 8vmin; height: 11vmin;
-  border-radius: 51% 49% 47% 53%/44% 45% 55% 69%; background-color: #c8e6c9;
-  background-image: linear-gradient(to top, #81c784, #c8e6c9); transform-origin: bottom center;
-  opacity: 0.9; box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 8vmin;
+  height: 11vmin;
+  border-radius: 51% 49% 47% 53%/44% 45% 55% 69%;
+  background-color: #c8e6c9;
+  background-image: linear-gradient(to top, #81c784, #c8e6c9);
+  transform-origin: bottom center;
+  opacity: 0.9;
+  box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
 }
 .flower__leaf--1 { transform: translate(-10%, 1%) rotateY(40deg) rotateX(-50deg); }
 .flower__leaf--2 { transform: translate(-50%, -4%) rotateX(40deg); }
 .flower__leaf--3 { transform: translate(-90%, 0%) rotateY(45deg) rotateX(50deg); }
 .flower__leaf--4 {
-  width: 8vmin; height: 8vmin; transform-origin: bottom left; border-radius: 4vmin 10vmin 4vmin 4vmin;
-  transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg); background-image: linear-gradient(to top, #66bb6a, #c8e6c9);
-  z-index: 1; opacity: 0.8;
+  width: 8vmin;
+  height: 8vmin;
+  transform-origin: bottom left;
+  border-radius: 4vmin 10vmin 4vmin 4vmin;
+  transform: translate(0%, 18%) rotateX(70deg) rotate(-43deg);
+  background-image: linear-gradient(to top, #66bb6a, #c8e6c9);
+  z-index: 1;
+  opacity: 0.8;
 }
 .flower__white-circle {
-  position: absolute; left: -3.5vmin; top: -3vmin; width: 9vmin; height: 4vmin;
-  border-radius: 50%; background-color: #fff;
+  position: absolute;
+  left: -3.5vmin;
+  top: -3vmin;
+  width: 9vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background-color: #fff;
 }
 .flower__white-circle::after {
-  content: ""; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);
-  width: 60%; height: 60%; border-radius: inherit;
-  background-image: linear-gradient(90deg, #ffeb12, #ffce00);
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border-radius: inherit;
+  background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(67.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(112.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(112.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(22.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(22.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(157.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(67.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), repeating-linear-gradient(67.5deg, rgba(0, 0, 0, 0.03) 0px, rgba(0, 0, 0, 0.03) 1px, transparent 1px, transparent 12px), linear-gradient(90deg, #ffeb12, #ffce00);
 }
 .flower__line {
-  height: 55vmin; width: 1.5vmin;
+  height: 55vmin;
+  width: 1.5vmin;
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent, rgba(255, 255, 255, 0.2)), linear-gradient(to top, transparent 10%, #3a6d3c, #66bb6a);
-  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5); animation: grow-flower-tree 4s backwards;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+  animation: grow-flower-tree 4s backwards;
 }
 .flower__line__leaf {
-  --w: 7vmin; --h: calc(var(--w) + 2vmin); position: absolute; top: 20%; left: 90%;
-  width: var(--w); height: var(--h); border-top-right-radius: var(--h); border-bottom-left-radius: var(--h);
+  --w: 7vmin;
+  --h: calc(var(--w) + 2vmin);
+  position: absolute;
+  top: 20%;
+  left: 90%;
+  width: var(--w);
+  height: var(--h);
+  border-top-right-radius: var(--h);
+  border-bottom-left-radius: var(--h);
   background-image: linear-gradient(to top, rgba(58, 109, 60, 0.4), #66bb6a);
 }
 .flower__line__leaf--1 { transform: rotate(70deg) rotateY(30deg); }
 .flower__line__leaf--2 { top: 45%; transform: rotate(70deg) rotateY(30deg); }
 .flower__line__leaf--3, .flower__line__leaf--4, .flower__line__leaf--6 {
-  border-top-right-radius: 0; border-bottom-left-radius: 0; border-top-left-radius: var(--h); border-bottom-right-radius: var(--h);
-  left: -460%; top: 12%; transform: rotate(-70deg) rotateY(30deg);
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: var(--h);
+  border-bottom-right-radius: var(--h);
+  left: -460%;
+  top: 12%;
+  transform: rotate(-70deg) rotateY(30deg);
 }
 .flower__line__leaf--4 { top: 40%; }
 .flower__line__leaf--5 { top: 0; transform-origin: left; transform: rotate(70deg) rotateY(30deg) scale(0.6); }
@@ -305,64 +350,147 @@ body {
 @keyframes blooming-flower { 0% { transform: scale(0); } }
 
 .ods-conteudo-container {
-    flex: 3; padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;
-    background: rgba(0,0,0,0.2); /* Fundo sutil para legibilidade */
+    flex: 3;
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .ods-conteudo-container h2 {
-    color: #fff; font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom: 2rem; text-align: left;
+    color: #fff;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 2rem;
+    text-align: left;
 }
 .ods-accordion .ods-item {
-    background-color: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 0.5rem;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.5rem;
 }
 .ods-accordion-title {
-    display: flex; justify-content: space-between; align-items: center; width: 100%;
-    padding: 1.2rem 0; cursor: pointer; color: #f0f9f4; font-size: 1.2rem;
-    font-weight: 600; transition: color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem 0;
+    cursor: pointer;
+    color: #f0f9f4;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 .ods-accordion-title:hover {
     color: #a7ffee;
 }
 .ods-accordion-title .icon {
-    transition: transform 0.3s ease-in-out; font-size: 1.5rem; color: #a7ffee;
+    transition: transform 0.3s ease-in-out;
+    font-size: 1.5rem;
+    color: #81c784;
 }
 .ods-accordion-content {
-    max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-    color: #dcedc8; font-size: 0.95rem; line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    color: #dcedc8;
+    font-size: 0.95rem;
+    line-height: 1.7;
 }
-.ods-accordion-content ul { list-style-type: '🌿'; padding-left: 20px; }
-.ods-accordion-content li { margin-bottom: 0.5rem; }
-.ods-item.active .ods-accordion-title { color: #fff; }
-.ods-item.active .ods-accordion-title .icon { transform: rotate(45deg); }
+.ods-accordion-content ul {
+    list-style-type: '🌿';
+    padding-left: 20px;
+}
+.ods-accordion-content li {
+    margin-bottom: 0.5rem;
+}
+.ods-item.active .ods-accordion-title {
+    color: #a7ffee;
+}
+.ods-item.active .ods-accordion-title .icon {
+    transform: rotate(45deg);
+}
 
 @media (max-width: 900px) {
-    #ods { flex-direction: column; }
-    .ods-animacao-container { min-height: 50vh; width: 100%; }
-    .ods-conteudo-container { padding: 2rem; width: 100%; }
+    #ods {
+        flex-direction: column;
+    }
+    .ods-animacao-container {
+        min-height: 50vh;
+        width: 100%;
+    }
+    .ods-conteudo-container {
+        padding: 2rem;
+        width: 100%;
+    }
 }
 
+
+/* NOVO RODAPÉ MINIMALISTA COM EFEITO HOVER */
 footer {
-  background-color: #2e5d34; color: #e0f2f1; text-align: center; margin-top: 0;
-  border-top: 2px solid rgba(129, 199, 132, 0.4); cursor: pointer;
+  background-color: #35613b;
+  color: #e0f2f1;
+  text-align: center;
+  margin-top: 0;
+  border-top: 2px solid rgba(129, 199, 132, 0.4);
+  cursor: pointer;
+  /* A transição agora é no próprio footer para suavizar a mudança de altura */
   transition: all 0.4s ease-in-out;
 }
-.rodape-conteudo { padding: 15px 25px; }
-.rodape-visivel {
-    display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0;
+
+.rodape-conteudo {
+    padding: 15px 25px;
 }
-.seta-hover { display: inline-block; transition: transform 0.4s ease-in-out; }
+
+.rodape-visivel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.seta-hover {
+    display: inline-block;
+    transition: transform 0.4s ease-in-out;
+}
+
 .rodape-oculto {
-    max-height: 0; opacity: 0; overflow: hidden;
+    max-height: 0; /* Começa oculto e sem altura */
+    opacity: 0;
+    overflow: hidden;
     transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
 }
-.rodape-oculto p { margin-bottom: 10px; }
-.rodape-oculto a {
-  color: #fff; margin: 0 10px; text-decoration: none;
-  font-weight: 600; transition: all 0.3s ease;
+
+.rodape-oculto p {
+    margin-bottom: 10px;
 }
-.rodape-oculto a:hover { color: #a7ffee; text-decoration: underline; }
-footer:hover { padding-top: 25px; padding-bottom: 25px; }
-footer:hover .seta-hover { transform: rotate(180deg); }
-footer:hover .rodape-oculto { max-height: 200px; opacity: 1; margin-top: 15px; }
+
+.rodape-oculto a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.rodape-oculto a:hover {
+  color: #a7ffee;
+  text-decoration: underline;
+}
+
+/* Efeito ao passar o mouse */
+footer:hover {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+footer:hover .seta-hover {
+    transform: rotate(180deg); /* Gira a seta para baixo */
+}
+
+footer:hover .rodape-oculto {
+    max-height: 200px; /* Expande a altura */
+    opacity: 1; /* Torna o conteúdo visível */
+    margin-top: 15px; /* Cria um espaço quando expandido */
+}
 
 </style>
 </head>
@@ -377,7 +505,7 @@ footer:hover .rodape-oculto { max-height: 200px; opacity: 1; margin-top: 15px; }
     <div class="subtitulo">
       Descubra as árvores do IFAM CMZL e mergulhe em suas histórias, idades e nomes. Aprenda curiosidades sobre cada espécie, compreenda sua importância para o campus e conecte-se com a natureza que nos cerca.
     </div>
-    <a href="#sobre" id="botao-catalogo">Explorar o Catálogo</a>
+    <button id="botao-catalogo">Explorar o Catálogo</button>
   </div>
 </section>
 
@@ -640,6 +768,8 @@ accordionItems.forEach(item => {
         }
     });
 });
+
+// Nenhum script é necessário para o novo rodapé, ele funciona 100% com CSS.
 
 </script>
 
