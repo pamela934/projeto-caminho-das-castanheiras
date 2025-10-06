@@ -14,7 +14,7 @@ body {
   background-color: #f0f9f4;
 }
 
-/* ... (Todo o seu CSS continua aqui, sem alterações) ... */
+/* ... (Todo o seu CSS original permanece aqui) ... */
 
 /* Primeira Seção */
 #home {
@@ -27,6 +27,8 @@ body {
   background-image: url('floresta-com-arvores-perto.jpg');
   background-size: cover;
   background-position: center;
+  padding: 0 15px; /* Adicionado para evitar que o texto encoste nas bordas */
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
 }
 #home::before {
   content:"";
@@ -432,6 +434,7 @@ body {
     .ods-conteudo-container {
         padding: 2rem;
         width: 100%;
+        box-sizing: border-box; /* Garante que o padding não aumente a largura */
     }
 }
 
@@ -491,6 +494,90 @@ footer:hover .rodape-oculto {
     opacity: 1;
     margin-top: 15px;
 }
+
+
+/* --- INÍCIO DAS REGRAS DE RESPONSIVIDADE ADICIONADAS --- */
+
+@media (max-width: 768px) {
+    
+    /* Ajustes Gerais */
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Linha do Tempo Vertical */
+    .trilha-container {
+        flex-direction: column;
+        align-items: center; /* Centraliza os itens na vertical */
+        gap: 50px; /* Adiciona espaço entre os itens */
+    }
+
+    .trilha-container::before {
+        /* Transforma a linha horizontal em vertical */
+        left: 50%;
+        transform: translateX(-50%);
+        top: 25px;
+        bottom: 25px;
+        width: 4px;
+        height: auto;
+    }
+    
+    .trilha-item {
+        flex: none; /* Remove a flexibilidade para que o item ocupe sua largura natural */
+        width: 90%; /* Define uma largura para os itens */
+        max-width: 350px;
+        padding: 0;
+    }
+
+    /* Cards 5W2H */
+    .card {
+        width: 90%; /* Faz o card ocupar quase toda a largura */
+        max-width: 300px; /* Mas limita o tamanho máximo */
+        height: 300px; /* Pode reduzir a altura um pouco */
+    }
+
+    /* Seção ODS */
+    .ods-conteudo-container {
+        padding: 2.5rem 1.5rem; /* Ajusta o padding para telas menores */
+    }
+
+    .ods-accordion-title {
+        font-size: 1.1rem; /* Diminui um pouco o título do accordion */
+    }
+}
+
+
+@media (max-width: 480px) {
+    
+    /* Ajusta a seção inicial para telas bem pequenas */
+    .container-frase {
+        padding: 20px 15px;
+    }
+
+    .frase {
+        min-height: 5rem; /* Garante espaço para o texto quebrar a linha */
+    }
+
+    .subtitulo {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajusta a equipe */
+    .membro {
+        max-width: 150px;
+    }
+    .membro p {
+        font-size: 0.9rem;
+    }
+
+    /* Seção ODS */
+    .flowers {
+        transform: scale(0.6); /* Diminui a animação para caber melhor */
+    }
+}
+
+/* --- FIM DAS REGRAS DE RESPONSIVIDADE --- */
+
 
 </style>
 </head>
