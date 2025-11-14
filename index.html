@@ -14,8 +14,6 @@ body {
   background-color: #f0f9f4;
 }
 
-/* ... (Todo o seu CSS original permanece aqui) ... */
-
 /* Primeira Seção */
 #home {
   height: 100vh;
@@ -24,11 +22,11 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  background-image: url('floresta-com-arvores-perto.jpg');
+  background-image: url('/images/Forest.jpg');
   background-size: cover;
   background-position: center;
-  padding: 0 15px; /* Adicionado para evitar que o texto encoste nas bordas */
-  box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 #home::before {
   content:"";
@@ -46,6 +44,7 @@ body {
   position: relative; z-index:2;
   padding:40px 20px; text-align:center;
   background-color: rgba(0,0,0,0.5); border-radius:15px;
+  max-width: 90%;
 }
 .frase {
   font-size: clamp(1.5rem,4vw,2.5rem);
@@ -65,6 +64,8 @@ body {
   color:#fff; background-color: rgba(0,0,0,0.6);
   border:2px solid #2e5d34; border-radius:25px; cursor:pointer;
   transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
 }
 #botao-catalogo:hover {
   background-color: rgba(0,0,0,0.8); border-color:#2e5d34;
@@ -75,8 +76,9 @@ body {
   padding:60px 20px; background-color:#fff; color:#2e5d34;
 }
 #sobre h2 { font-size:2rem; margin-bottom:20px; text-align:center; }
+#sobre h3 { font-size:1.5rem; margin-top:40px; }
 #sobre p, #sobre ul {
-  max-width:800px; margin:0 auto 20px; line-height:1.5;
+  max-width:800px; margin:0 auto 20px; line-height:1.6;
 }
 .equipe {
   display:flex; justify-content:center; gap:30px; flex-wrap:wrap;
@@ -113,7 +115,7 @@ body {
 #planejamento {
   padding: 60px 20px;
   color: #2e5d34;
-  background-image: url('193480080o.jpg');
+  background-image: url('/images/Planning.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -125,6 +127,17 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(220, 237, 193, 0.7);
   z-index: 0;
+}
+#planejamento h2 {
+  position: relative; 
+  z-index: 2; 
+  text-align: center; 
+  color: #000000;
+  margin-bottom: 10px;
+}
+#planejamento p {
+  position: relative;
+  z-index: 2;
 }
 .cards-5w2h {
   display: flex;
@@ -151,7 +164,8 @@ body {
   border-radius: 12px;
   cursor: pointer;
 }
-.card:hover .card-inner {
+.card:hover .card-inner,
+.card.flipped .card-inner {
   transform: rotateY(180deg);
 }
 .card-front, .card-back {
@@ -400,6 +414,8 @@ body {
     transition: transform 0.3s ease-in-out;
     font-size: 1.5rem;
     color: #81c784;
+    flex-shrink: 0;
+    margin-left: 10px;
 }
 .ods-accordion-content {
     max-height: 0;
@@ -421,21 +437,6 @@ body {
 }
 .ods-item.active .ods-accordion-title .icon {
     transform: rotate(45deg);
-}
-
-@media (max-width: 900px) {
-    #ods {
-        flex-direction: column;
-    }
-    .ods-animacao-container {
-        min-height: 50vh;
-        width: 100%;
-    }
-    .ods-conteudo-container {
-        padding: 2rem;
-        width: 100%;
-        box-sizing: border-box; /* Garante que o padding não aumente a largura */
-    }
 }
 
 /* NOVO RODAPÉ MINIMALISTA COM EFEITO HOVER */
@@ -495,89 +496,316 @@ footer:hover .rodape-oculto {
     margin-top: 15px;
 }
 
+/* ========== REGRAS DE RESPONSIVIDADE MOBILE ========== */
 
-/* --- INÍCIO DAS REGRAS DE RESPONSIVIDADE ADICIONADAS --- */
-
-@media (max-width: 768px) {
-    
-    /* Ajustes Gerais */
-    h2 {
-        font-size: 1.8rem;
+/* Tablets e telas médias */
+@media (max-width: 900px) {
+    /* Seção ODS - Layout vertical */
+    #ods {
+        flex-direction: column;
     }
-
-    /* Linha do Tempo Vertical */
+    .ods-animacao-container {
+        min-height: 40vh;
+        width: 100%;
+    }
+    .ods-conteudo-container {
+        padding: 2.5rem 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Linha do Tempo - Layout vertical */
     .trilha-container {
         flex-direction: column;
-        align-items: center; /* Centraliza os itens na vertical */
-        gap: 50px; /* Adiciona espaço entre os itens */
+        align-items: center;
+        gap: 40px;
     }
-
+    
     .trilha-container::before {
-        /* Transforma a linha horizontal em vertical */
         left: 50%;
         transform: translateX(-50%);
-        top: 25px;
-        bottom: 25px;
+        top: 0;
+        bottom: 0;
         width: 4px;
-        height: auto;
+        height: 100%;
     }
     
     .trilha-item {
-        flex: none; /* Remove a flexibilidade para que o item ocupe sua largura natural */
-        width: 90%; /* Define uma largura para os itens */
-        max-width: 350px;
+        flex: none;
+        width: 85%;
+        max-width: 400px;
         padding: 0;
     }
-
+    
     /* Cards 5W2H */
     .card {
-        width: 90%; /* Faz o card ocupar quase toda a largura */
-        max-width: 300px; /* Mas limita o tamanho máximo */
-        height: 300px; /* Pode reduzir a altura um pouco */
-    }
-
-    /* Seção ODS */
-    .ods-conteudo-container {
-        padding: 2.5rem 1.5rem; /* Ajusta o padding para telas menores */
-    }
-
-    .ods-accordion-title {
-        font-size: 1.1rem; /* Diminui um pouco o título do accordion */
+        width: 280px;
+        height: 340px;
     }
 }
 
-
-@media (max-width: 480px) {
+/* Smartphones */
+@media (max-width: 768px) {
+    /* Ajustes gerais de tipografia */
+    h2 {
+        font-size: 1.8rem;
+    }
     
-    /* Ajusta a seção inicial para telas bem pequenas */
+    /* Seção Home */
+    .titulo-pequeno {
+        top: 15px;
+        left: 15px;
+    }
+    
+    .titulo-pequeno img {
+        width: 50px;
+    }
+    
     .container-frase {
-        padding: 20px 15px;
-    }
-
-    .frase {
-        min-height: 5rem; /* Garante espaço para o texto quebrar a linha */
-    }
-
-    .subtitulo {
-        font-size: 0.9rem;
+        padding: 30px 15px;
+        max-width: 95%;
     }
     
-    /* Ajusta a equipe */
+    .frase {
+        min-height: 5rem;
+    }
+    
+    #botao-catalogo {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* Seção Sobre */
+    #sobre {
+        padding: 40px 15px;
+    }
+    
+    #sobre h2 {
+        font-size: 1.8rem;
+    }
+    
+    #sobre h3 {
+        font-size: 1.3rem;
+    }
+    
+    .equipe {
+        gap: 20px;
+    }
+    
     .membro {
         max-width: 150px;
     }
+    
+    .membro .foto {
+        width: 80px;
+        height: 80px;
+    }
+    
     .membro p {
         font-size: 0.9rem;
     }
-
+    
+    /* Linha do Tempo */
+    #linha-do-tempo {
+        padding: 30px 15px;
+    }
+    
+    .trilha-item {
+        width: 90%;
+    }
+    
+    .trilha-item h4 {
+        font-size: 1rem;
+    }
+    
+    .trilha-item p {
+        font-size: 0.9rem;
+    }
+    
+    /* Seção Planejamento */
+    #planejamento {
+        padding: 40px 15px;
+    }
+    
+    #planejamento h2 {
+        font-size: 1.8rem;
+    }
+    
+    #planejamento p {
+        font-size: 0.85rem;
+    }
+    
+    .cards-5w2h {
+        gap: 15px;
+    }
+    
+    .card {
+        width: 90%;
+        max-width: 300px;
+        height: 320px;
+    }
+    
     /* Seção ODS */
+    .ods-conteudo-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .ods-accordion-title {
+        font-size: 1.05rem;
+        padding: 1rem 0;
+    }
+    
+    .ods-accordion-content {
+        font-size: 0.9rem;
+    }
+    
+    /* Animação de flores - escala reduzida */
     .flowers {
-        transform: scale(0.6); /* Diminui a animação para caber melhor */
+        transform: scale(0.6);
+    }
+    
+    /* Rodapé */
+    .rodape-conteudo {
+        padding: 12px 15px;
+    }
+    
+    .rodape-visivel {
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+    
+    .rodape-oculto a {
+        margin: 0 5px;
+        font-size: 0.9rem;
     }
 }
 
-/* --- FIM DAS REGRAS DE RESPONSIVIDADE --- */
+/* Smartphones pequenos */
+@media (max-width: 480px) {
+    /* Home */
+    .frase {
+        font-size: 1.3rem;
+        min-height: 6rem;
+    }
+    
+    .subtitulo {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    #botao-catalogo {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+    
+    /* Sobre */
+    #sobre h2 {
+        font-size: 1.5rem;
+    }
+    
+    #sobre h3 {
+        font-size: 1.2rem;
+    }
+    
+    .membro {
+        max-width: 130px;
+    }
+    
+    .membro .foto {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .membro p {
+        font-size: 0.85rem;
+    }
+    
+    /* Linha do Tempo */
+    .trilha-item .arvore {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+    
+    .trilha-item h4 {
+        font-size: 0.95rem;
+    }
+    
+    .trilha-item p {
+        font-size: 0.85rem;
+    }
+    
+    /* Cards */
+    .card {
+        width: 95%;
+        max-width: 280px;
+        height: 300px;
+    }
+    
+    .card-back {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+    
+    /* ODS */
+    .ods-animacao-container {
+        min-height: 35vh;
+    }
+    
+    .ods-conteudo-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .ods-conteudo-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ods-accordion-title {
+        font-size: 0.95rem;
+        padding: 0.9rem 0;
+    }
+    
+    .ods-accordion-title .icon {
+        font-size: 1.3rem;
+    }
+    
+    .ods-accordion-content {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+    
+    .flowers {
+        transform: scale(0.5);
+    }
+    
+    /* Rodapé */
+    .rodape-visivel {
+        font-size: 0.85rem;
+    }
+    
+    .rodape-oculto {
+        font-size: 0.85rem;
+    }
+    
+    .rodape-oculto a {
+        display: block;
+        margin: 5px 0;
+    }
+}
 
+/* Landscape em smartphones */
+@media (max-width: 900px) and (orientation: landscape) {
+    #home {
+        height: auto;
+        min-height: 100vh;
+        padding: 60px 15px;
+    }
+    
+    .ods-animacao-container {
+        min-height: 50vh;
+    }
+}
 
 </style>
 </head>
@@ -585,7 +813,7 @@ footer:hover .rodape-oculto {
 
 <section id="home">
     <div class="titulo-pequeno">
-    <img src="logo.png" alt="Logo Caminho das Castanheiras">
+    <img src="/images/CaminhodasCastanheiras.jpg" alt="Logo Caminho das Castanheiras">
   </div>
   <div class="container-frase">
     <div class="frase" id="frase"></div>
@@ -604,17 +832,17 @@ footer:hover .rodape-oculto {
   <h3 style="text-align:center;">Equipe Participante</h3>
 <div class="equipe">
   <div class="membro">
-    <div class="foto" style="background-image: url('Thalia_d6f6896f.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="foto" style="background-image: url('/images/ThaliaRodrigues.jpg'); background-size: cover; background-position: center;"></div>
     <p><strong>Thalia Rodrigues</strong></p>
     <p>Acadêmica de Engnharia de Software</p>
   </div>
   <div class="membro">
-    <div class="foto" style="background-image: url('Maria_435746c6.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="foto" style="background-image: url('/images/Engineering.jpg'); background-size: cover; background-position: center;"></div>
     <p><strong>Maria de Fátima</strong></p>
     <p>Acadêmica de Engnharia de Software</p>
   </div>
   <div class="membro">
-    <div class="foto" style="background-image: url('pamela.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="foto" style="background-image: url('/images/SoftwareEngineering.jpg'); background-size: cover; background-position: center;"></div>
     <p><strong>Pamela Nascimento</strong></p>
     <p>Acadêmica de Engnharia de Software</p>
   </div>
@@ -631,9 +859,7 @@ footer:hover .rodape-oculto {
 </section>
 
 <section id="planejamento">
-    <h2 style="position: relative; z-index: 2; text-align: center; color: #000000;">
-    Planejamento 5W2H
-  </h2>
+    <h2>Planejamento 5W2H</h2>
   <p style="font-size: 12px; color: #000000; text-align: center; font-style: italic; margin-top: -10px; position: relative; z-index: 2;">
     Passe o mouse ou toque para virar
   </p>
@@ -857,33 +1083,32 @@ accordionItems.forEach(item => {
     });
 });
 
-// ========= NOVO SCRIPT PARA FAZER A PLANTA RENASCER AUTOMATICAMENTE ========
+// Script para virar cards em mobile (toque)
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('click', function() {
+        // Em dispositivos touch, adiciona/remove classe para virar o card
+        if (window.innerWidth <= 768) {
+            this.classList.toggle('flipped');
+        }
+    });
+});
+
+// Script para fazer a planta renascer automaticamente
 const floresContainer = document.querySelector('.flowers');
 
 function renascerPlanta() {
-    // 1. Remove a classe para 'resetar' a animação
     floresContainer.classList.remove('animar');
-
-    // 2. Força o navegador a recalcular o estilo
     void floresContainer.offsetWidth;
-
-    // 3. Adiciona a classe de volta para reiniciar a animação
     floresContainer.classList.add('animar');
 }
 
-// Define o tempo total do ciclo:
-// A animação mais longa dura 4s. Vamos considerar 5s (5000ms) para tudo terminar.
 const tempoDeAnimacao = 5000; 
-// O tempo de espera pedido é 2s (2000ms).
 const tempoDeEspera = 2000;
-const intervaloTotal = tempoDeAnimacao + tempoDeEspera; // Total: 7000ms ou 7 segundos
+const intervaloTotal = tempoDeAnimacao + tempoDeEspera;
 
-// Quando a página carregar, inicia o ciclo
 document.addEventListener('DOMContentLoaded', () => {
-    // Faz a planta nascer pela primeira vez
     renascerPlanta();
-    
-    // Define um intervalo para que ela renasça continuamente
     setInterval(renascerPlanta, intervaloTotal); 
 });
 
