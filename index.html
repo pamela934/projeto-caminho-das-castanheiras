@@ -22,7 +22,7 @@ body {
   align-items: center;
   flex-direction: column;
   position: relative;
-  background-image: url('/images/Forest.jpg');
+  background-image: url('floresta-com-arvores-perto.jpg');
   background-size: cover;
   background-position: center;
   padding: 0 15px;
@@ -504,10 +504,12 @@ footer:hover .rodape-oculto {
     #ods {
         flex-direction: column;
     }
+    
+    /* OCULTAR A ANIMAÇÃO DA FLOR NO MOBILE */
     .ods-animacao-container {
-        min-height: 40vh;
-        width: 100%;
+        display: none;
     }
+    
     .ods-conteudo-container {
         padding: 2.5rem 2rem;
         width: 100%;
@@ -655,11 +657,6 @@ footer:hover .rodape-oculto {
         font-size: 0.9rem;
     }
     
-    /* Animação de flores - escala reduzida */
-    .flowers {
-        transform: scale(0.6);
-    }
-    
     /* Rodapé */
     .rodape-conteudo {
         padding: 12px 15px;
@@ -744,10 +741,6 @@ footer:hover .rodape-oculto {
     }
     
     /* ODS */
-    .ods-animacao-container {
-        min-height: 35vh;
-    }
-    
     .ods-conteudo-container {
         padding: 1.5rem 1rem;
     }
@@ -771,10 +764,6 @@ footer:hover .rodape-oculto {
         line-height: 1.6;
     }
     
-    .flowers {
-        transform: scale(0.5);
-    }
-    
     /* Rodapé */
     .rodape-visivel {
         font-size: 0.85rem;
@@ -796,10 +785,6 @@ footer:hover .rodape-oculto {
         height: auto;
         min-height: 100vh;
         padding: 60px 15px;
-    }
-    
-    .ods-animacao-container {
-        min-height: 50vh;
     }
 }
 
@@ -1021,7 +1006,7 @@ footer:hover .rodape-oculto {
 <footer>
     <div class="rodape-conteudo">
         <p class="rodape-visivel">
-            &copy; 2025 Caminho das Castanheiras - IFAM CMZL 
+            © 2025 Caminho das Castanheiras - IFAM CMZL 
             <span class="seta-hover">^</span>
         </p>
         <div class="rodape-oculto">
