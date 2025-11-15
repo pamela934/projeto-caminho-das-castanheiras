@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Caminho das Castanheiras</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
 <style>
 html { scroll-behavior: smooth; }
 body {
@@ -59,15 +59,22 @@ body {
   text-shadow:1px 1px 3px rgba(0,0,0,0.7); margin-bottom:20px;
   color: #fff;
 }
-#botao-catalogo {
-  margin-top:20px; padding:12px 25px; font-size:1rem; font-weight:600;
+.botoes-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.botao {
+  padding:12px 25px; font-size:1rem; font-weight:600;
   color:#fff; background-color: rgba(0,0,0,0.6);
   border:2px solid #2e5d34; border-radius:25px; cursor:pointer;
   transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
 }
-#botao-catalogo:hover {
+.botao:hover {
   background-color: rgba(0,0,0,0.8); border-color:#2e5d34;
 }
 
@@ -560,6 +567,12 @@ footer:hover .rodape-oculto {
         width: 280px;
         height: 340px;
     }
+    
+    /* Botoes container responsivo */
+    .botoes-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Smartphones */
@@ -597,10 +610,9 @@ footer:hover .rodape-oculto {
         margin-bottom: 15px;
     }
     
-    #botao-catalogo {
+    .botao {
         padding: 10px 20px;
         font-size: 0.9rem;
-        margin-top: 10px;
     }
     
     /* Ajustes gerais de tipografia */
@@ -737,10 +749,9 @@ footer:hover .rodape-oculto {
         margin-bottom: 12px;
     }
     
-    #botao-catalogo {
+    .botao {
         padding: 8px 16px;
         font-size: 0.85rem;
-        margin-top: 8px;
     }
     
     /* Sobre */
@@ -854,19 +865,25 @@ footer:hover .rodape-oculto {
       Descubra as árvores do IFAM CMZL e mergulhe em suas histórias, idades e nomes. Aprenda curiosidades sobre cada espécie, compreenda sua importância para o campus e conecte-se com a natureza que nos cerca.
     </div>
 
-<a id="botao-catalogo" 
-   href="https://pamela934.github.io/caminho-das-casta.-aba-2/" 
-   target="_blank">
-   Acessar Relatório
-</a>
-
+    <div class="botoes-container">
+      <a class="botao" 
+         href="https://pamela934.github.io/caminho-das-casta.-aba-2/" 
+         target="_blank">
+         Acessar Relatório
+      </a>
+      <a class="botao" 
+         href="https://pamela934.github.io/prototipo-caminho-das-castanheiras/" 
+         target="_blank">
+         Visualizar Protótipo
+      </a>
+    </div>
   </div>
 </section>
 
 <section id="sobre">
     <h2>Sobre o Projeto</h2>
   <p>
-    O projeto tem como objetivo principal sensibilizar e educar a comunidade sobre a riqueza da flora local, com foco nas árvores do campus do IFAM Manaus Zona Leste. Utilizando uma abordagem interativa, o projeto visa fornecer informações detalhadas sobre cada espécie, incluindo sua idade, história, funcionalidades e importância para o ecossistema e a cultura local. O intuito é promover a valorização dessas árvores, ressaltando seu papel na preservação ambiental e na construção da identidade do campus.
+   O projeto tem como objetivo principal sensibilizar e educar a comunidade sobre a riqueza da flora local, com foco nas árvores do campus do IFAM Manaus Zona Leste. Utilizando uma abordagem interativa, o projeto visa fornecer informações detalhadas sobre cada espécie, incluindo sua idade, história, funcionalidades e importância para o ecossistema e a cultura local. O intuito é promover a valorização dessas árvores, ressaltando seu papel na preservação ambiental e na construção da identidade do campus.
   </p>
   <h3 style="text-align:center;">Equipe Participante</h3>
 <div class="equipe">
